@@ -8,7 +8,15 @@ function App() {
   return (
     <>
       <Header />
-      <StatusList />
+      <div className="col-md-12 row g-0">
+        <div className="col-md-4"></div>
+        <div className="col-md-8">
+          <div></div>
+          <div>
+            <StatusList />
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
