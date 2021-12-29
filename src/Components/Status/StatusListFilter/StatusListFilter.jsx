@@ -9,7 +9,7 @@ const StatusListFilter = () => {
   };
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-3 user-select-none">
       <div className="m-2 card">
         <div className="card-header text-center">
           <h6>FILTER STATUS</h6>
