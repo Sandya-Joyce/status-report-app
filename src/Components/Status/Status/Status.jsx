@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../../UI/Card/Card";
 
 const Status = () => {
   let date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
@@ -19,21 +18,53 @@ const Status = () => {
         <div className="border col-md-5">
           <div className="card-body p-0">
             <h5 className="card-header">Achievements</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <div className="card-text overflow-auto" style={{ height: "200px" }}>
+              <ul>
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer. This is a wider card with supporting text below as a
+                  natural lead-in to additional content.
+                </li>
+                This content is a little bit longer.
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </li>
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="border col-md-5">
           <div className="card-body p-0">
             <h5 className="card-header">Impediments</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <div className="card-text overflow-auto" style={{ height: "200px" }}>
+              <ul>
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer. This is a wider card with supporting text below as a
+                  natural lead-in to additional content.
+                </li>
+                This content is a little bit longer.
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </li>
+                <li>
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="bg-light g-0 row">
