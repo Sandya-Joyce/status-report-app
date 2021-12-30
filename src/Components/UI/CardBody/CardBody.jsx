@@ -6,8 +6,8 @@ const CardBody = ({ title, dataList }) => {
       <h5 className="card-header">{title}</h5>
       <div className="card-text overflow-auto" style={{ height: "200px" }}>
         <ul>
-          {dataList.map((listItem) => {
-            return <li>{listItem}</li>;
+          {dataList.map((listItem,index) => {
+            return <li key={index}>{listItem}</li>;
           })}
         </ul>
       </div>

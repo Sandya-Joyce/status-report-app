@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-const StatusListFilter = () => {
-  const [dateBy, setDateBy] = useState("date");
+const StatusListFilter = ({ searchByEmployeeName, searchByDate }) => {
+  const refEmployeeName = useRef("");
+  const refDate = useRef("");
+  const [dateType, setDateType] = useState("date");
 
-  const radioDateChangeHandler = (e) => {
-    console.log(dateBy);
-    setDateBy(e.target.value);
+  const EmployeeNameChangeHandler = () => {
+    searchByEmployeeName(refEmployeeName.current.value);
+  };
+
+  const DateTypeChangeHandler = () => {
+    searchByDate(refDate.current.value.replace(/-/g, "/"));
   };
 
   return (
@@ -21,8 +26,11 @@ const StatusListFilter = () => {
                 NAME
               </label>
               <input
+                ref={refEmployeeName}
+                onChange={EmployeeNameChangeHandler}
                 type="search"
                 className="form-control"
+                autoComplete="off"
                 name="txt-name"
                 id="fldName"
               />
@@ -34,7 +42,9 @@ const StatusListFilter = () => {
                   type="radio"
                   name="rd-date"
                   value="date"
-                  onChange={radioDateChangeHandler}
+                  onChange={(e) => {
+                    setDateType(e.target.value);
+                  }}
                   id="rdDate"
                   defaultChecked
                 />
@@ -46,39 +56,28 @@ const StatusListFilter = () => {
                   type="radio"
                   name="rd-date"
                   value="month"
-                  onChange={radioDateChangeHandler}
+                  onChange={(e) => {
+                    setDateType(e.target.value);
+                  }}
                   id="rdMonth"
                 />
                 <label htmlFor="rdMonth">MONTH</label>
               </div>
             </div>
-            {dateBy === "date" && (
-              <div className="input-group-text mb-2">
-                <label htmlFor="fldDate" className="form-label me-2">
-                  BY DATE
-                </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="dt-by-date"
-                  max={new Date().toISOString().split("T")[0]}
-                  id="fldDate"
-                />
-              </div>
-            )}
-            {dateBy === "month" && (
-              <div className="input-group-text mb-2">
-                <label htmlFor="fldMonth" className="form-label me-2">
-                  BY MONTH
-                </label>
-                <input
-                  type="month"
-                  className="form-control"
-                  name="dt-by-month"
-                  id="fldMonth"
-                />
-              </div>
-            )}
+            <div className="input-group-text mb-2">
+              <label htmlFor="fldDate" className="form-label me-2">
+                BY {dateType.toUpperCase()}
+              </label>
+              <input
+                ref={refDate}
+                type={dateType}
+                className="form-control"
+                name="dt-by-date"
+                max={new Date().toISOString().split("T")[0]}
+                id="fldDate"
+                onChange={DateTypeChangeHandler}
+              />
+            </div>
           </div>
         </div>
       </div>

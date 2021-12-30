@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../UI/Card/Card";
 import Status from "../Status/Status";
 
-const StatusList = () => {
+const StatusList = ({ employeeName, statusDate }) => {
   let statusListData = [
     {
       objId: 1,
       employeeId: "HM0008441",
       employeeName: "Ankush More",
-      date: "23/January/2021",
+      date: "2021/01/16",
       achievements: [
         "Worked on status-report-react application",
         "Documentation of DocuSign integration",
@@ -23,9 +23,9 @@ const StatusList = () => {
     },
     {
       objId: 2,
-      employeeId: "HM0008441",
-      employeeName: "Ankush More",
-      date: "23/January/2021",
+      employeeId: "HM0008442",
+      employeeName: "Akshay Gaidhani",
+      date: "2019/12/16",
       achievements: [
         "Worked on status-report-react application",
         "Documentation of DocuSign integration",
@@ -40,9 +40,9 @@ const StatusList = () => {
     },
     {
       objId: 3,
-      employeeId: "HM0008441",
-      employeeName: "Ankush More",
-      date: "23/January/2021",
+      employeeId: "HM0008443",
+      employeeName: "Vijay Bhusari",
+      date: "2020/01/10",
       achievements: [
         "Worked on status-report-react application",
         "Documentation of DocuSign integration",
@@ -57,9 +57,9 @@ const StatusList = () => {
     },
     {
       objId: 4,
-      employeeId: "HM0008441",
-      employeeName: "Ankush More",
-      date: "23/January/2021",
+      employeeId: "HM0008444",
+      employeeName: "Aditya Arde",
+      date: "2021/01/16",
       achievements: [
         "Worked on status-report-react application",
         "Documentation of DocuSign integration",
@@ -73,9 +73,19 @@ const StatusList = () => {
       nextDayPlan: "Complete status-report-react application",
     },
   ];
+
+  let filteredStatusList = statusListData;
+
+  filteredStatusList = statusListData.filter((status) => {
+    return (
+      status.employeeName.toLowerCase().includes(employeeName.toLowerCase()) &&
+      status.date.includes(statusDate)
+    );
+  });
+
   return (
     <Card>
-      {statusListData.map((status) => {
+      {filteredStatusList.map((status) => {
         return (
           <Status
             key={status.objId}
